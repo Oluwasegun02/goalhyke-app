@@ -1,8 +1,10 @@
-# Nestjs specific
+# Next.js specific
 /dist
 /node_modules
 /build
 /tmp
+/.next
+/out
 
 # Logs
 logs
@@ -15,6 +17,7 @@ lerna-debug.log*
 
 # dotenv environment variable files
 .env
+.env.local
 .env.development
 .env.test
 .env.production
@@ -22,3 +25,7 @@ lerna-debug.log*
 # temp directory
 .temp
 .tmp
+
+# vercel
+.vercel
+
