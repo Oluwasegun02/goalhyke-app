@@ -1,0 +1,1 @@
+export default function ProgressPage(){return <div className='p-10 text-center'>Progress placeholder</div>}

@@ -1,0 +1,1 @@
+export default function ProfilePage(){return <div className='p-10 text-center'>Profile placeholder</div>}

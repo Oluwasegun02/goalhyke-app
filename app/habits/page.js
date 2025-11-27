@@ -1,0 +1,1 @@
+export default function HabitsPage(){return <div className='p-10 text-center'>Habits placeholder</div>}

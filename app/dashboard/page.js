@@ -12,6 +12,7 @@ import AppHeader from '../../components/AppHeader';
 import Sidebar from '../../components/Sidebar';
 import Footer from '../../components/Footer';
 import BehavioralSolutions from '../../components/BehavioralSolutions';
+import MiniProfile from '../../components/MiniProfile';
 import {
     Menu, ChevronLeft, LogOut, Settings, User, Bell, ChevronDown, Award,
     Grip, Goal, Link as LinkIcon, BarChart3, Star
@@ -64,6 +65,20 @@ const COMMITMENT_CARDS = [
 
 import Image from 'next/image';
 const GoalCard = ({ goal }) => {
+    const slugify = (text) => text.toLowerCase().replace(/\s+/g, '-');
+    const goalSlug = slugify(goal.name);
+    // Map specific names to existing page routes
+    const goalLinks = {
+        'lose-weight': '/goals/lose-weight',
+        'exercise-regularly': '/goals/exercise',
+        'grow-wealth': '/goals/grow-wealth',
+        'strengthen-your-spirit': '/goals/strengthen-your-spirit',
+        'excel-academically': '/goals/excel-academically',
+        'master-tech-skill': '/goals/master-tech-skill',
+        // Add other mappings here as pages are created
+    };
+    const href = goalLinks[goalSlug] || '#'; // Default to '#' if no page exists yet
+
     return (
         <div className="relative p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 ease-in-out flex flex-col items-center text-center">
             <div className="w-24 h-24 mb-4 rounded-full overflow-hidden flex items-center justify-center bg-[#f5f7fa]">
@@ -72,30 +87,28 @@ const GoalCard = ({ goal }) => {
                     alt={goal.alt || goal.name}
                     width={96}
                     height={96}
+                    sizes="(max-width: 640px) 80px, (max-width: 1024px) 96px, 96px"
                     className="object-contain w-full h-full"
                     loading="lazy"
                 />
             </div>
             <h3 className="text-sm font-medium text-gray-800 mb-2 text-center leading-snug">{goal.name}</h3>
-            <button
-                className="text-xs font-medium px-4 py-1 rounded-full bg-[#5B48CC] text-white hover:opacity-90 transition shadow-sm"
-                aria-label={`Start goal: ${goal.name}`}
-            >
+            <Link href={href} aria-label={`Start goal: ${goal.name}`} className={`text-xs font-medium px-4 py-1 rounded-full bg-[#5B48CC] text-white hover:opacity-90 transition shadow-sm ${href === '#' ? 'cursor-not-allowed opacity-50' : ''}`}>
                 {goal.description} <span aria-hidden>↗</span>
-            </button>
+            </Link>
         </div>
     );
 };
 
 const CommitmentCard = ({ user }) => (
-    <div className="relative p-4 bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col justify-between h-32 w-full max-w-xs transition-shadow duration-300 w-64">
+    <div className="relative p-4 bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col justify-between h-32 w-64 transition-shadow duration-300">
         <div className="flex items-center space-x-2">
-            <Image src={user.avatar} alt={user.name} width={30} height={30} className="rounded-full object-cover" />
+            <Image src={user.avatar} alt={user.name} width={30} height={30} sizes="30px" className="rounded-full object-cover" />
             <span className="text-sm font-medium text-gray-800">{user.name}</span>
         </div>
         <p className="text-lg font-normal text-gray-600 mb-2">{user.goal}</p>
         <div className="absolute bottom-[-15px] left-1/2 transform -translate-x-1/2 z-10 bg-white rounded-full p-1 shadow-lg border-2 border-gray-100">
-            <Star className="w-5 h-5 text-yellow-400 fill-current" />
+            <Star className="w-5 h-5 text-yellow-400" />
         </div>
     </div>
 );
@@ -141,6 +154,10 @@ const DashboardPage = () => {
                                 <GoalCard key={index} goal={goal} />
                             ))}
                         </div>
+                                                {/* Mini Profile Snapshot */}
+                                                <div className="mt-16">
+                                                    <MiniProfile />
+                                                </div>
                     </div>
 
                     {/* Community Commitments Section (3 static cards) */}
