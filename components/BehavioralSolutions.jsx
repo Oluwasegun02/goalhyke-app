@@ -19,10 +19,11 @@ const BehavioralSolutions = () => {
           {/* Left Side: Illustration */}
           <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
             <Image
-              src="/habit-solutions-illustration.png" // **Place this image in public folder**
+              src="/habit-solutions-illustration.PNG"
               alt="Habit Solutions Illustration"
-              width={300} // Adjust size as needed
+              width={300}
               height={300}
+              loading="lazy"
               style={{ objectFit: 'contain' }}
             />
           </div>

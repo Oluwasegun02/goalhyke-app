@@ -23,7 +23,7 @@ const Navbar = () => {
     <nav className="bg-white shadow-sm py-4">
       <div className="container mx-auto px-4 flex justify-between items-center relative">
         <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo.JPG" alt="Goal Hyke Logo" width={32} height={32} />
+          <Image src="/logo.jpg" alt="Goal Hyke Logo" width={32} height={32} loading="lazy" />
           <span className="text-xl font-bold text-gray-800">Goal Hyke</span>
         </Link>
 

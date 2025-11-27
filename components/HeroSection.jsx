@@ -83,13 +83,14 @@ const HeroSection = () => {
         {/* Container to hold the wide, centered image */}
         <div className="w-[95vw] px-4">
           <Image
-            src="/dashboard-preview.png" // **Ensure this image path is correct in your public folder**
+            src="/dashboard-preview.PNG"
             alt="GoalHyke Dashboard Preview"
             width={1200}
             height={700}
             sizes="95vw"
+            loading="lazy"
             style={{ objectFit: 'contain' }}
-            className="w-full h-auto shadow-2xl rounded-xl" // Adding subtle shadow/border for style
+            className="w-full h-auto shadow-2xl rounded-xl"
           />
         </div>
       </div>

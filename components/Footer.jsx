@@ -22,6 +22,7 @@ const Footer = () => {
           {/* Logo/Name - Changed to match the text "LOGO" in the screenshot */}
           <Link href="/" className="inline-flex items-center justify-center md:justify-start space-x-2 mb-4">
             {/* The screenshot shows "LOGO" text, not necessarily an image */}
+             <Image src="/logo.jpg" alt="Goal Hyke Logo" width={32} height={32} loading="lazy" />
             <span className="text-xl font-bold text-white uppercase">LOGO</span>
           </Link>
 
